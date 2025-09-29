@@ -1,0 +1,30 @@
+SGBD (Sistema Gerenciador de Banco de Dados) -> Evita redundância, melhora a consistência, organiza os dados
+facilita o acesso aos dados, garante integridade, evita anomalias e garante a segurança
+
+metadados -> dados sobre o banco de dados 
+
+information_schema -> onde tem os metadados (banco de dados do próprio MySQL) 
+
+QUANDO TEM UMA RELAÇÃO MUITOS PARA MUITOS ( * -> * ) você cria uma TERCEIRA ENTIDADE 
+
+[PRIMEIRA ENTIDADE] 1 -> * [TERCEIRA ENTIDADE] * -> 1 [SEGUNDA ENTIDADE] 
+
+Chave primária -> Um atributo que identifica um registro distinto dentro da mesma entidade 
+
+DDL - DEFINITION - Mexe com os metadados - CREATE, REPLACE, DROP, ALTER 
+DML - MANIPULATION - INSERT, UPDATE, DELETE, SELECT 
+
+// TABELA 
+
+CREATE TABLE tbl_name (
+  codigo INT PRIMARY KEY,
+  campo VARCHAR(100) NOT NULL,
+  cargo INT DEFAULT 60
+  );
+CREATE TABLE tbl_name2 (
+  codigo INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(20),
+  codigo_tab1 INT,
+  FOREIGN KEY (codigo_tab1) REFERENCES tab1(codigo)
+  );
+  
