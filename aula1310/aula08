@@ -1,0 +1,11 @@
+Data: 13/10/2025
+
+DECIMAL = NUMERIC = NUMBER 
+preferência para o DECIMAL
+--------------- // ---------------
+Campo "Total" -> campo calculado, na primeira parte ele fica com valor zero mas depois dos registros ele ganha valor
+--------------- // ---------------
+Evitar usar o * em SELECT 
+
+Use: SELECT nome,email from cliente;
+--------------- // ---------------
