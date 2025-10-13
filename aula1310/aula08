@@ -2,10 +2,40 @@ Data: 13/10/2025
 
 DECIMAL = NUMERIC = NUMBER 
 preferência para o DECIMAL
+
 --------------- // ---------------
+
 Campo "Total" -> campo calculado, na primeira parte ele fica com valor zero mas depois dos registros ele ganha valor
+
 --------------- // ---------------
+
 Evitar usar o * em SELECT 
 
 Use: SELECT nome,email from cliente;
+
 --------------- // ---------------
+
+Aliases  -> são usados ​​para dar a uma tabela, ou a uma coluna em uma tabela, um nome temporário.
+Ex:   SELECT column_name AS alias_name
+      FROM table_name;
+
+--------------- // ---------------
+
+WHERE -> usado para filtrar a pesquisa na tabela
+Ex: SELECT column1, column2, ...
+    FROM table_name
+    WHERE condition;
+
+LIKE -> Usado junto com o WHERE para buscar um padrão especifico em uma coluna
+Ex: SELECT column1, column2, ...
+    FROM table_name
+    WHERE columnN LIKE pattern;
+
+--------------- // ---------------
+LIMIT -> cláusula é usada para especificar o número de registros a serem retornados.
+Ex:    SELECT column_name(s)
+       FROM table_name
+       WHERE condition
+       LIMIT number;
+
+    
