@@ -38,4 +38,13 @@ Ex:    SELECT column_name(s)
        WHERE condition
        LIMIT number;
 
+--------------- // ---------------
+JOIN -> É usada para combinar linhas de duas ou mais tabelas, com base em uma coluna relacionada entre elas.
+
+
+INNER JOIN: Retorna registros que possuem valores correspondentes em ambas as tabelas
+LEFT JOIN: Retorna todos os registros da tabela da esquerda e os registros correspondentes da tabela da direita
+RIGHT JOIN: Retorna todos os registros da tabela da direita e os registros correspondentes da tabela da esquerda
+CROSS JOIN: Retorna todos os registros de ambas as tabelas
+
     
