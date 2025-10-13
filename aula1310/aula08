@@ -41,7 +41,9 @@ Ex:    SELECT column_name(s)
 --------------- // ---------------
 
 ORDER BY -> serve para ordenar os resultados de uma consulta (query) com base em uma ou mais colunas.
-
+Ex: SELECT preco
+    from Produto
+    ORDER BY preco ASC;
 --------------- // ---------------
 
 ASC significa ascending (crescente, do menor para o maior) e é usado para ordenar os dados em ordem crescente
@@ -61,4 +63,84 @@ LEFT JOIN: Retorna todos os registros da tabela da esquerda e os registros corre
 RIGHT JOIN: Retorna todos os registros da tabela da direita e os registros correspondentes da tabela da esquerda
 CROSS JOIN: Retorna todos os registros de ambas as tabelas
 
+
+TABELA USADA NA AULA HOJE:
+CREATE TABLE Cliente (  
+  id INT PRIMARY KEY AUTO_INCREMENT,  
+  nome VARCHAR(100) NOT NULL,  
+  email VARCHAR(150) UNIQUE,  
+  criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Produto (  
+  id INT PRIMARY KEY AUTO_INCREMENT,  
+	descricao VARCHAR(150) NOT NULL,  
+	preco DECIMAL(10,2) NOT NULL CHECK (preco >= 0),  
+	ativo TINYINT(1) NOT NULL DEFAULT 1
+);
+
+
+CREATE TABLE Venda (  
+  id INT PRIMARY KEY AUTO_INCREMENT,  
+	data DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  
+	cliente_id INT NOT NULL,  
+	total DECIMAL(10,2) NOT NULL DEFAULT 0,  
+	FOREIGN KEY (cliente_id) REFERENCES Cliente(id)
+	/*CONSTRAINT fk_venda_cliente FOREIGN KEY (cliente_id)     REFERENCES Cliente(id) ON UPDATE CASCADE ON DELETE RESTRICT*/
+);
+
+CREATE TABLE Item_Venda (  
+  id INT PRIMARY KEY AUTO_INCREMENT,  
+  venda_id INT NOT NULL,  
+  produto_id INT NOT NULL,  
+  quantidade INT NOT NULL CHECK (quantidade > 0),  
+  preco_venda DECIMAL(10,2) NOT NULL CHECK (preco_venda >= 0),
+  FOREIGN KEY (venda_id) REFERENCES Venda(id),
+  FOREIGN KEY (produto_id) REFERENCES Produto(id)
+  /*
+  CONSTRAINT fk_item_venda 
+    FOREIGN KEY (venda_id) REFERENCES Venda(id)
+      ON UPDATE CASCADE ON DELETE CASCADE,      
+  CONSTRAINT fk_item_produto 
+    FOREIGN KEY (produto_id) 
+      REFERENCES Produto(id) 
+      ON UPDATE CASCADE ON DELETE RESTRICT*/
+);
+
+
+INSERT INTO Cliente (nome, email) 
+  VALUES
+  ('Ana Lima', 'ana.lima@example.com'),
+  ('Bruno Souza', 'bruno.souza@example.com'),
+  ('Carla Nunes', 'carla.nunes@example.com'),
+  ('Diego Alves', 'diego.alves@example.com')
+;
+
+INSERT INTO Produto (descricao, preco) 
+  VALUES
+  ('Mouse Óptico USB', 59.90),
+  ('Teclado Mecânico', 329.00),
+  ('Monitor 24" Full HD', 899.00),
+  ('Cabo HDMI 2m', 29.90),
+  ('Headset Gamer', 259.00);
+
+INSERT INTO Venda (cliente_id, total) 
+  VALUES
+  (1, 0),  
+  (2, 0),  
+  (1, 0); 
+
+INSERT INTO Item_Venda (venda_id, produto_id, quantidade, preco_venda) 
+  VALUES  
+  (1, 1, 1, 59.90),   
+  (1, 4, 2, 29.90); 
+
+INSERT INTO Item_Venda (venda_id, produto_id, quantidade, preco_venda) 
+  VALUES  
+  (2, 2, 1, 329.00),  
+  (2, 5, 1, 259.00); 
+  
+INSERT INTO Item_Venda (venda_id, produto_id, quantidade, preco_venda) 
+  VALUES  
+  (3, 3, 1, 899.00); 
     
