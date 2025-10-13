@@ -39,6 +39,20 @@ Ex:    SELECT column_name(s)
        LIMIT number;
 
 --------------- // ---------------
+
+ORDER BY -> serve para ordenar os resultados de uma consulta (query) com base em uma ou mais colunas.
+
+--------------- // ---------------
+
+ASC significa ascending (crescente, do menor para o maior) e é usado para ordenar os dados em ordem crescente
+
+--------------- // ---------------
+
+DESC -> Se você quiser ordenar os dados de forma decrescente
+Se você quiser ordenar os dados de forma decrescente
+
+--------------- // ---------------
+
 JOIN -> É usada para combinar linhas de duas ou mais tabelas, com base em uma coluna relacionada entre elas.
 
 
