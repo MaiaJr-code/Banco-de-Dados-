@@ -18,3 +18,18 @@ select *
   from certificado c
   INNER JOIN participante p
     ON c.id_participante = p.id_participante
+
+
+select c.numero_unico, c.data_hora_emissao
+    , cur.nome curso, p.nome participante
+    , a.nome assinador, ca.nome cargo
+    from certificado c
+    INNER JOIN curso cur 
+      ON c.id_curso = cur.id_curso
+    inner join participante p 
+      ON c.id_participante = p.id_participante
+    inner join assinante a
+      on c.id_assinante = a.id_assinante
+    inner join cargo ca
+      on a.id_cargo = ca.id_cargo
+    ;
