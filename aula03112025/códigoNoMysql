@@ -167,74 +167,74 @@ VALUES
 -- Emitindo certificados (Sem alterações)
 INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante) 
 VALUES
-('CERT-2024-001', 'https://unitins.br/cert/001',1, 1, 1),
-('CERT-2024-002', 'https://unitins.br/cert/002',2, 1, 1),
-('CERT-2024-003', 'https://unitins.br/cert/003',1, 2, 2);
+('CERT-2024-001', '/cert/001',1, 1, 1),
+('CERT-2024-002', '/cert/002',2, 1, 1),
+('CERT-2024-003', '/cert/003',1, 2, 2);
 -- Inserindo certificados duplicados por curso para o Participante 1 (Maria Silva)
 INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
 VALUES 
 -- Duplicando o Certificado do Curso 'Banco de Dados I' (ID 1) para a Participante 1
-('CERT-2025-024', 'https://unitins.br/cert/25024', 1, 1, 1, '2025-02-10 10:00:00'),
+('CERT-2025-024', '/cert/25024', 1, 1, 1, '2025-02-10 10:00:00'),
 -- Duplicando o Certificado do Curso 'Python para Análise de Dados' (ID 9) para a Participante 1
-('CERT-2025-025', 'https://unitins.br/cert/25025', 1, 9, 7, '2025-02-11 11:00:00'),
+('CERT-2025-025', '/cert/25025', 1, 9, 7, '2025-02-11 11:00:00'),
 -- Duplicando o Certificado do Curso 'Programação Web' (ID 2) para a Participante 1
-('CERT-2025-026', 'https://unitins.br/cert/25026', 1, 2, 2, '2025-02-12 14:00:00');
+('CERT-2025-026', '/cert/25026', 1, 2, 2, '2025-02-12 14:00:00');
 INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
 VALUES 
 -- Alunos antigos (Maria, João, Ana) fazendo cursos novos
-('CERT-2024-004', 'https://unitins.br/cert/004', 3, 3, 3, '2024-11-01 10:00:00'),
-('CERT-2024-005', 'https://unitins.br/cert/005', 3, 5, 5, '2024-11-05 14:00:00'),
-('CERT-2024-006', 'https://unitins.br/cert/006', 2, 10, 4, '2024-11-10 09:00:00'),
+('CERT-2024-004', '/cert/004', 3, 3, 3, '2024-11-01 10:00:00'),
+('CERT-2024-005', '/cert/005', 3, 5, 5, '2024-11-05 14:00:00'),
+('CERT-2024-006', '/cert/006', 2, 10, 4, '2024-11-10 09:00:00'),
 -- Alunos novos fazendo cursos antigos
-('CERT-2024-007', 'https://unitins.br/cert/007', 4, 1, 1, '2024-11-15 11:00:00'),
-('CERT-2024-008', 'https://unitins.br/cert/008', 5, 2, 2, '2024-11-20 16:00:00'),
-('CERT-2024-009', 'https://unitins.br/cert/009', 6, 1, 1, '2024-11-21 17:00:00'),
+('CERT-2024-007', '/cert/007', 4, 1, 1, '2024-11-15 11:00:00'),
+('CERT-2024-008', '/cert/008', 5, 2, 2, '2024-11-20 16:00:00'),
+('CERT-2024-009', '/cert/009', 6, 1, 1, '2024-11-21 17:00:00'),
 -- Alunos novos fazendo cursos novos (distribuindo os assinantes)
-('CERT-2024-010', 'https://unitins.br/cert/010', 8, 9, 7, '2024-11-25 10:00:00'),
-('CERT-2024-011', 'https://unitins.br/cert/011', 11, 9, 7, '2024-12-01 14:00:00'),
-('CERT-2024-012', 'https://unitins.br/cert/012', 14, 7, 3, '2024-12-01 15:00:00'),
-('CERT-2024-013', 'https://unitins.br/cert/013', 17, 4, 6, '2024-12-05 18:00:00'),
-('CERT-2024-014', 'https://unitins.br/cert/014', 20, 6, 8, '2024-12-10 11:00:00'),
-('CERT-2024-015', 'https://unitins.br/cert/015', 23, 8, 7, '2024-12-11 10:00:00');
+('CERT-2024-010', '/cert/010', 8, 9, 7, '2024-11-25 10:00:00'),
+('CERT-2024-011', '/cert/011', 11, 9, 7, '2024-12-01 14:00:00'),
+('CERT-2024-012', '/cert/012', 14, 7, 3, '2024-12-01 15:00:00'),
+('CERT-2024-013', '/cert/013', 17, 4, 6, '2024-12-05 18:00:00'),
+('CERT-2024-014', '/cert/014', 20, 6, 8, '2024-12-10 11:00:00'),
+('CERT-2024-015', '/cert/015', 23, 8, 7, '2024-12-11 10:00:00');
 INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
 VALUES 
 -- Bloco 1: Tornando 'Python para Análise de Dados' (ID 9) e 'Programação Web' (ID 2) muito populares.
-('CERT-2024-016', 'https://unitins.br/cert/016', 4, 2, 2, '2024-12-12 09:00:00'),
-('CERT-2024-017', 'https://unitins.br/cert/017', 9, 9, 7, '2024-12-13 10:00:00'),
-('CERT-2024-018', 'https://unitins.br/cert/018', 10, 9, 7, '2024-12-13 11:00:00'),
-('CERT-2024-019', 'https://unitins.br/cert/019', 12, 9, 7, '2024-12-14 14:00:00'),
-('CERT-2024-020', 'https://unitins.br/cert/020', 6, 2, 2, '2024-12-15 09:00:00'),
-('CERT-2024-021', 'https://unitins.br/cert/021', 7, 2, 2, '2024-12-15 10:00:00'),
-('CERT-2024-022', 'https://unitins.br/cert/022', 8, 2, 2, '2024-12-15 11:00:00'),
+('CERT-2024-016', '/cert/016', 4, 2, 2, '2024-12-12 09:00:00'),
+('CERT-2024-017', '/cert/017', 9, 9, 7, '2024-12-13 10:00:00'),
+('CERT-2024-018', '/cert/018', 10, 9, 7, '2024-12-13 11:00:00'),
+('CERT-2024-019', '/cert/019', 12, 9, 7, '2024-12-14 14:00:00'),
+('CERT-2024-020', '/cert/020', 6, 2, 2, '2024-12-15 09:00:00'),
+('CERT-2024-021', '/cert/021', 7, 2, 2, '2024-12-15 10:00:00'),
+('CERT-2024-022', '/cert/022', 8, 2, 2, '2024-12-15 11:00:00'),
 -- Bloco 2: Popularizando cursos de Gestão (ID 4) e UX/UI (ID 5)
-('CERT-2024-023', 'https://unitins.br/cert/023', 19, 4, 6, '2024-12-18 15:00:00'),
-('CERT-2024-024', 'https://unitins.br/cert/024', 22, 4, 6, '2024-12-18 16:00:00'),
-('CERT-2024-025', 'https://unitins.br/cert/025', 5, 5, 5, '2024-12-20 10:00:00'),
-('CERT-2024-026', 'https://unitins.br/cert/026', 11, 5, 5, '2024-12-20 11:00:00'),
-('CERT-2024-027', 'https://unitins.br/cert/027', 13, 5, 5, '2024-12-21 14:00:00'),
+('CERT-2024-023', '/cert/023', 19, 4, 6, '2024-12-18 15:00:00'),
+('CERT-2024-024', '/cert/024', 22, 4, 6, '2024-12-18 16:00:00'),
+('CERT-2024-025', '/cert/025', 5, 5, 5, '2024-12-20 10:00:00'),
+('CERT-2024-026', '/cert/026', 11, 5, 5, '2024-12-20 11:00:00'),
+('CERT-2024-027', '/cert/027', 13, 5, 5, '2024-12-21 14:00:00'),
 -- Bloco 3: Emissões de 2025. Alunos fazendo múltiplos cursos.
-('CERT-2025-001', 'https://unitins.br/cert/25001', 4, 9, 7, '2025-01-10 09:00:00'),
-('CERT-2025-002', 'https://unitins.br/cert/25002', 9, 2, 2, '2025-01-10 10:00:00'),
-('CERT-2025-003', 'https://unitins.br/cert/25003', 10, 2, 2, '2025-01-11 11:00:00'),
-('CERT-2025-004', 'https://unitins.br/cert/25004', 7, 3, 3, '2025-01-12 14:00:00'),
-('CERT-2025-005', 'https://unitins.br/cert/25005', 8, 3, 3, '2025-01-12 15:00:00'),
+('CERT-2025-001', '/cert/25001', 4, 9, 7, '2025-01-10 09:00:00'),
+('CERT-2025-002', '/cert/25002', 9, 2, 2, '2025-01-10 10:00:00'),
+('CERT-2025-003', '/cert/25003', 10, 2, 2, '2025-01-11 11:00:00'),
+('CERT-2025-004', '/cert/25004', 7, 3, 3, '2025-01-12 14:00:00'),
+('CERT-2025-005', '/cert/25005', 8, 3, 3, '2025-01-12 15:00:00'),
 -- Bloco 4: Distribuindo cursos de Cloud (ID 7), Segurança (ID 8) e Mobile (ID 10)
-('CERT-2025-006', 'https://unitins.br/cert/25006', 22, 7, 3, '2025-01-15 09:00:00'),
-('CERT-2025-007', 'https://unitins.br/cert/25007', 15, 7, 3, '2025-01-15 10:00:00'),
-('CERT-2025-008', 'https://unitins.br/cert/25008', 16, 7, 3, '2025-01-15 11:00:00'),
-('CERT-2025-009', 'https://unitins.br/cert/25009', 19, 8, 7, '2025-01-20 14:00:00'),
-('CERT-2025-010', 'https://unitins.br/cert/25010', 21, 8, 7, '2025-01-20 15:00:00'),
-('CERT-2025-011', 'https://unitins.br/cert/25011', 14, 10, 3, '2025-01-22 16:00:00'),
-('CERT-2025-012', 'https://unitins.br/cert/25012', 18, 10, 3, '2025-01-22 17:00:00'),
+('CERT-2025-006', '/cert/25006', 22, 7, 3, '2025-01-15 09:00:00'),
+('CERT-2025-007', '/cert/25007', 15, 7, 3, '2025-01-15 10:00:00'),
+('CERT-2025-008', '/cert/25008', 16, 7, 3, '2025-01-15 11:00:00'),
+('CERT-2025-009', '/cert/25009', 19, 8, 7, '2025-01-20 14:00:00'),
+('CERT-2025-010', '/cert/25010', 21, 8, 7, '2025-01-20 15:00:00'),
+('CERT-2025-011', '/cert/25011', 14, 10, 3, '2025-01-22 16:00:00'),
+('CERT-2025-012', '/cert/25012', 18, 10, 3, '2025-01-22 17:00:00'),
 -- Bloco 5: Mais certificados para os alunos antigos (Maria, João, Ana) e outros
-('CERT-2025-013', 'https://unitins.br/cert/25013', 1, 9, 7, '2025-01-25 09:00:00'),
-('CERT-2025-014', 'https://unitins.br/cert/25014', 2, 9, 7, '2025-01-25 10:00:00'),
-('CERT-2025-015', 'https://unitins.br/cert/25015', 3, 9, 7, '2025-01-25 11:00:00'),
-('CERT-2025-016', 'https://unitins.br/cert/25016', 1, 4, 6, '2025-01-30 14:00:00'),
-('CERT-2025-017', 'https://unitins.br/cert/25017', 2, 5, 5, '2025-02-01 10:00:00'),
-('CERT-2025-018', 'https://unitins.br/cert/25018', 3, 7, 3, '2025-02-02 11:00:00'),
-('CERT-2025-019', 'https://unitins.br/cert/25019', 4, 4, 6, '2025-02-03 15:00:00'),
-('CERT-2025-020', 'https://unitins.br/cert/25020', 5, 9, 7, '2025-02-04 16:00:00'),
-('CERT-2025-021', 'https://unitins.br/cert/25021', 1, 7, 3, '2025-02-05 09:00:00'),
-('CERT-2025-022', 'https://unitins.br/cert/25022', 15, 8, 7, '2025-02-05 10:00:00'),
-('CERT-2025-023', 'https://unitins.br/cert/25023', 20, 9, 7, '2025-02-06 11:00:00');
+('CERT-2025-013', '/cert/25013', 1, 9, 7, '2025-01-25 09:00:00'),
+('CERT-2025-014', '/cert/25014', 2, 9, 7, '2025-01-25 10:00:00'),
+('CERT-2025-015', '/cert/25015', 3, 9, 7, '2025-01-25 11:00:00'),
+('CERT-2025-016', '/cert/25016', 1, 4, 6, '2025-01-30 14:00:00'),
+('CERT-2025-017', '/cert/25017', 2, 5, 5, '2025-02-01 10:00:00'),
+('CERT-2025-018', '/cert/25018', 3, 7, 3, '2025-02-02 11:00:00'),
+('CERT-2025-019', '/cert/25019', 4, 4, 6, '2025-02-03 15:00:00'),
+('CERT-2025-020', '/cert/25020', 5, 9, 7, '2025-02-04 16:00:00'),
+('CERT-2025-021', '/cert/25021', 1, 7, 3, '2025-02-05 09:00:00'),
+('CERT-2025-022', '/cert/25022', 15, 8, 7, '2025-02-05 10:00:00'),
+('CERT-2025-023', '/cert/25023', 20, 9, 7, '2025-02-06 11:00:00');
