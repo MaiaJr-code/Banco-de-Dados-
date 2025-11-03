@@ -1,3 +1,4 @@
+-- Tabela de Participantes (Sem alterações)
 CREATE TABLE participante (
     id_participante INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -156,6 +157,7 @@ INSERT INTO assinante (nome, id_cargo)
 VALUES
 ('Dr. Carlos Mendes', 1),
 ('Profa. Beatriz Lima', '2);
+
 INSERT INTO assinante (nome, cargo) 
 VALUES 
 ('Prof. Ricardo Alves', 3),
@@ -164,21 +166,27 @@ VALUES
 ('Luciana Peixoto', 4),
 ('Dr. Fernando Guimarães', 3),
 ('Profa. Julia Bastos', 4);
+
 -- Emitindo certificados (Sem alterações)
 INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante) 
 VALUES
 ('CERT-2024-001', '/cert/001',1, 1, 1),
 ('CERT-2024-002', '/cert/002',2, 1, 1),
 ('CERT-2024-003', '/cert/003',1, 2, 2);
+
 -- Inserindo certificados duplicados por curso para o Participante 1 (Maria Silva)
+
 INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
 VALUES 
 -- Duplicando o Certificado do Curso 'Banco de Dados I' (ID 1) para a Participante 1
 ('CERT-2025-024', '/cert/25024', 1, 1, 1, '2025-02-10 10:00:00'),
+
 -- Duplicando o Certificado do Curso 'Python para Análise de Dados' (ID 9) para a Participante 1
 ('CERT-2025-025', '/cert/25025', 1, 9, 7, '2025-02-11 11:00:00'),
+
 -- Duplicando o Certificado do Curso 'Programação Web' (ID 2) para a Participante 1
 ('CERT-2025-026', '/cert/25026', 1, 2, 2, '2025-02-12 14:00:00');
+
 INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
 VALUES 
 -- Alunos antigos (Maria, João, Ana) fazendo cursos novos
@@ -196,6 +204,7 @@ VALUES
 ('CERT-2024-013', '/cert/013', 17, 4, 6, '2024-12-05 18:00:00'),
 ('CERT-2024-014', '/cert/014', 20, 6, 8, '2024-12-10 11:00:00'),
 ('CERT-2024-015', '/cert/015', 23, 8, 7, '2024-12-11 10:00:00');
+
 INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
 VALUES 
 -- Bloco 1: Tornando 'Python para Análise de Dados' (ID 9) e 'Programação Web' (ID 2) muito populares.
