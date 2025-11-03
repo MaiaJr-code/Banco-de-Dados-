@@ -1,0 +1,14 @@
+select * FROM Participante WHERE nome like 'maria%';
+
+
+SELECT * from curso WHERE carga_horaria > 60;
+
+
+SELECT COUNT(data_hora_emissao) AS TotalCertificados from certificado; 
+linha159: erro
+linha 161:erro
+
+SELECT ce.numero_unico AS CODIGO, p.nome AS PESSOAS, c.nome AS CURSOS 
+  FROM certificado AS ce
+    INNER JOIN participante AS p ON p.id_participante = ce.id_participante
+    INNER JOIN curso AS c ON c.id_curso = ce.id_curso;
