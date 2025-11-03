@@ -1,0 +1,240 @@
+CREATE TABLE participante (
+    id_participante INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL
+);
+
+-- Tabela de Cursos (MODIFICADA - Remoção do campo 'conteudo_programatico')
+CREATE TABLE curso (
+    id_curso INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    carga_horaria INT NOT NULL
+);
+
+-- Cada linha representa um item atômico do conteúdo do curso.
+CREATE TABLE conteudo (
+    id_conteudo INT AUTO_INCREMENT PRIMARY KEY,
+    id_curso INT NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    ordem INT, -- Coluna opcional para manter a sequência dos tópicos
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+);
+
+-- Tabela Cargo
+CREATE TABLE cargo (
+  id_cargo INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL
+);
+
+-- Tabela de Assinantes
+CREATE TABLE assinante (
+    id_assinante INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    id_cargo INT NOT NULL,
+    FOREIGN KEY (id_cargo) REFERENCES cargo(id_cargo)
+);
+
+
+-- Tabela de Certificados (Sem alterações na estrutura)
+CREATE TABLE certificado (
+    id_certificado INT AUTO_INCREMENT PRIMARY KEY,
+    numero_unico VARCHAR(50) UNIQUE NOT NULL,
+    url_verificacao VARCHAR(255) UNIQUE NOT NULL,
+    data_hora_emissao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    id_participante INT NOT NULL,
+    id_curso INT NOT NULL,
+    id_assinante INT NOT NULL,
+    FOREIGN KEY (id_participante) REFERENCES participante(id_participante),
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso),
+    FOREIGN KEY (id_assinante) REFERENCES assinante(id_assinante)
+);
+
+-- Inserindo Participantes (Sem alterações)
+INSERT INTO participante (nome, email) 
+VALUES
+('Maria Silva', 'maria.silva'),
+('João Santos', 'joao.santos'),
+('Ana Costa', 'ana.costa');
+
+INSERT INTO participante (nome, email) 
+VALUES 
+('Bruno Lima', 'bruno.lima'),
+('Carla Dias', 'carla.dias'),
+('Daniel Moreira', 'daniel.moreira'),
+('Eduarda Fernandes', 'eduarda.fernandes'),
+('Fábio Guedes', 'fabio.guedes'),
+('Gabriela Nunes', 'gabriela.nunes'),
+('Heitor Vasconcelos', 'heitor.vasconcelos'),
+('Isabela Correia', 'isabela.correia'),
+('Juliano Matos', 'juliano.matos'),
+('Larissa Tavares', 'larissa.tavares'),
+('Marcos Vinicius', 'marcos.vinicius'),
+('Natália Oliveira', 'natalia.oliveira'),
+('Otávio Pereira', 'otavio.pereira'),
+('Patrícia Ramos', 'patricia.ramos'),
+('Rafael Queiroz', 'rafael.queiroz'),
+('Simone Andrade', 'simone.andrade'),
+('Tiago Bernardes', 'tiago.bernardes'),
+('Ursula Castro', 'ursula.castro'),
+('Victor Hugo', 'victor.hugo'),
+('Wesley Souza', 'wesley.souza');
+
+-- Inserindo Cursos (MODIFICADO - sem 'conteudo_programatico')
+INSERT INTO curso (nome, carga_horaria) 
+VALUES
+('Banco de Dados I', 60),
+('Programação Web', 80),
+('Inteligência Artificial 101', 50),
+('Gestão de Projetos (PMBOK)', 40),
+('Design UX/UI Básico', 30),
+('Marketing Digital e SEO', 35),
+('Cloud Computing (AWS) Essencial', 60),
+('Segurança da Informação', 40),
+('Python para Análise de Dados', 50),
+('Desenvolvimento Mobile (React Native)', 70);
+
+-- NOVOS INSERTS - Inserindo o Conteúdo Programático na tabela 'conteudo'
+-- Note que os IDs dos cursos são (1, 2, 3...) na ordem de inserção acima.
+INSERT INTO conteudo (id_curso, descricao, ordem) 
+VALUES
+-- Curso 1: Banco de Dados I
+(1, 'Modelagem', 1),
+(1, 'SQL', 2),
+(1, 'Normalização', 3),
+-- Curso 2: Programação Web
+(2, 'HTML', 1),
+(2, 'CSS', 2),
+(2, 'JavaScript', 3),
+(2, 'PHP', 4),
+-- Curso 3: Inteligência Artificial 101
+(3, 'Conceitos básicos', 1),
+(3, 'Machine Learning', 2),
+(3, 'Deep Learning', 3),
+(3, 'Redes Neurais', 4),
+-- Curso 4: Gestão de Projetos (PMBOK)
+(4, 'Ciclo de vida', 1),
+(4, 'Áreas de conhecimento', 2),
+(4, 'Metodologias Ágeis vs Preditivas', 3),
+-- Curso 5: Design UX/UI Básico
+(5, 'Princípios de Usabilidade', 1),
+(5, 'Wireframes', 2),
+(5, 'Prototipagem', 3),
+(5, 'Ferramentas (Figma)', 4),
+-- Curso 6: Marketing Digital e SEO
+(6, 'Funil de vendas', 1),
+(6, 'Inbound Marketing', 2),
+(6, 'SEO On-Page', 3),
+(6, 'Google Analytics', 4),
+-- Curso 7: Cloud Computing (AWS) Essencial
+(7, 'Conceitos de nuvem', 1),
+(7, 'EC2', 2),
+(7, 'S3', 3),
+(7, 'RDS', 4),
+(7, 'VPC', 5),
+-- Curso 8: Segurança da Informação
+(8, 'Tríade CIA', 1),
+(8, 'Criptografia', 2),
+(8, 'Gestão de Riscos', 3),
+(8, 'LGPD', 4),
+-- Curso 9: Python para Análise de Dados
+(9, 'Pandas', 1),
+(9, 'Numpy', 2),
+(9, 'Matplotlib', 3),
+(9, 'Scikit-learn', 4),
+-- Curso 10: Desenvolvimento Mobile (React Native)
+(10, 'JavaScript ES6+', 1),
+(10, 'Componentes', 2),
+(10, 'State', 3),
+(10, 'Props', 4),
+(10, 'Navegação', 5);
+
+insert into cargo(nome)
+VALUES
+  ('Coordenador'), ('Diretora'), ('Instrutor'), ('Instrutura');
+-- Inserindo Assinantes (Sem alterações)
+INSERT INTO assinante (nome, id_cargo) 
+VALUES
+('Dr. Carlos Mendes', 1),
+('Profa. Beatriz Lima', '2);
+INSERT INTO assinante (nome, cargo) 
+VALUES 
+('Prof. Ricardo Alves', 3),
+('Dra. Eliana Faria', 4),
+('Marcos Tadeu', 3),
+('Luciana Peixoto', 4),
+('Dr. Fernando Guimarães', 3),
+('Profa. Julia Bastos', 4);
+-- Emitindo certificados (Sem alterações)
+INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante) 
+VALUES
+('CERT-2024-001', 'https://unitins.br/cert/001',1, 1, 1),
+('CERT-2024-002', 'https://unitins.br/cert/002',2, 1, 1),
+('CERT-2024-003', 'https://unitins.br/cert/003',1, 2, 2);
+-- Inserindo certificados duplicados por curso para o Participante 1 (Maria Silva)
+INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
+VALUES 
+-- Duplicando o Certificado do Curso 'Banco de Dados I' (ID 1) para a Participante 1
+('CERT-2025-024', 'https://unitins.br/cert/25024', 1, 1, 1, '2025-02-10 10:00:00'),
+-- Duplicando o Certificado do Curso 'Python para Análise de Dados' (ID 9) para a Participante 1
+('CERT-2025-025', 'https://unitins.br/cert/25025', 1, 9, 7, '2025-02-11 11:00:00'),
+-- Duplicando o Certificado do Curso 'Programação Web' (ID 2) para a Participante 1
+('CERT-2025-026', 'https://unitins.br/cert/25026', 1, 2, 2, '2025-02-12 14:00:00');
+INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
+VALUES 
+-- Alunos antigos (Maria, João, Ana) fazendo cursos novos
+('CERT-2024-004', 'https://unitins.br/cert/004', 3, 3, 3, '2024-11-01 10:00:00'),
+('CERT-2024-005', 'https://unitins.br/cert/005', 3, 5, 5, '2024-11-05 14:00:00'),
+('CERT-2024-006', 'https://unitins.br/cert/006', 2, 10, 4, '2024-11-10 09:00:00'),
+-- Alunos novos fazendo cursos antigos
+('CERT-2024-007', 'https://unitins.br/cert/007', 4, 1, 1, '2024-11-15 11:00:00'),
+('CERT-2024-008', 'https://unitins.br/cert/008', 5, 2, 2, '2024-11-20 16:00:00'),
+('CERT-2024-009', 'https://unitins.br/cert/009', 6, 1, 1, '2024-11-21 17:00:00'),
+-- Alunos novos fazendo cursos novos (distribuindo os assinantes)
+('CERT-2024-010', 'https://unitins.br/cert/010', 8, 9, 7, '2024-11-25 10:00:00'),
+('CERT-2024-011', 'https://unitins.br/cert/011', 11, 9, 7, '2024-12-01 14:00:00'),
+('CERT-2024-012', 'https://unitins.br/cert/012', 14, 7, 3, '2024-12-01 15:00:00'),
+('CERT-2024-013', 'https://unitins.br/cert/013', 17, 4, 6, '2024-12-05 18:00:00'),
+('CERT-2024-014', 'https://unitins.br/cert/014', 20, 6, 8, '2024-12-10 11:00:00'),
+('CERT-2024-015', 'https://unitins.br/cert/015', 23, 8, 7, '2024-12-11 10:00:00');
+INSERT INTO certificado (numero_unico, url_verificacao, id_participante, id_curso, id_assinante, data_hora_emissao) 
+VALUES 
+-- Bloco 1: Tornando 'Python para Análise de Dados' (ID 9) e 'Programação Web' (ID 2) muito populares.
+('CERT-2024-016', 'https://unitins.br/cert/016', 4, 2, 2, '2024-12-12 09:00:00'),
+('CERT-2024-017', 'https://unitins.br/cert/017', 9, 9, 7, '2024-12-13 10:00:00'),
+('CERT-2024-018', 'https://unitins.br/cert/018', 10, 9, 7, '2024-12-13 11:00:00'),
+('CERT-2024-019', 'https://unitins.br/cert/019', 12, 9, 7, '2024-12-14 14:00:00'),
+('CERT-2024-020', 'https://unitins.br/cert/020', 6, 2, 2, '2024-12-15 09:00:00'),
+('CERT-2024-021', 'https://unitins.br/cert/021', 7, 2, 2, '2024-12-15 10:00:00'),
+('CERT-2024-022', 'https://unitins.br/cert/022', 8, 2, 2, '2024-12-15 11:00:00'),
+-- Bloco 2: Popularizando cursos de Gestão (ID 4) e UX/UI (ID 5)
+('CERT-2024-023', 'https://unitins.br/cert/023', 19, 4, 6, '2024-12-18 15:00:00'),
+('CERT-2024-024', 'https://unitins.br/cert/024', 22, 4, 6, '2024-12-18 16:00:00'),
+('CERT-2024-025', 'https://unitins.br/cert/025', 5, 5, 5, '2024-12-20 10:00:00'),
+('CERT-2024-026', 'https://unitins.br/cert/026', 11, 5, 5, '2024-12-20 11:00:00'),
+('CERT-2024-027', 'https://unitins.br/cert/027', 13, 5, 5, '2024-12-21 14:00:00'),
+-- Bloco 3: Emissões de 2025. Alunos fazendo múltiplos cursos.
+('CERT-2025-001', 'https://unitins.br/cert/25001', 4, 9, 7, '2025-01-10 09:00:00'),
+('CERT-2025-002', 'https://unitins.br/cert/25002', 9, 2, 2, '2025-01-10 10:00:00'),
+('CERT-2025-003', 'https://unitins.br/cert/25003', 10, 2, 2, '2025-01-11 11:00:00'),
+('CERT-2025-004', 'https://unitins.br/cert/25004', 7, 3, 3, '2025-01-12 14:00:00'),
+('CERT-2025-005', 'https://unitins.br/cert/25005', 8, 3, 3, '2025-01-12 15:00:00'),
+-- Bloco 4: Distribuindo cursos de Cloud (ID 7), Segurança (ID 8) e Mobile (ID 10)
+('CERT-2025-006', 'https://unitins.br/cert/25006', 22, 7, 3, '2025-01-15 09:00:00'),
+('CERT-2025-007', 'https://unitins.br/cert/25007', 15, 7, 3, '2025-01-15 10:00:00'),
+('CERT-2025-008', 'https://unitins.br/cert/25008', 16, 7, 3, '2025-01-15 11:00:00'),
+('CERT-2025-009', 'https://unitins.br/cert/25009', 19, 8, 7, '2025-01-20 14:00:00'),
+('CERT-2025-010', 'https://unitins.br/cert/25010', 21, 8, 7, '2025-01-20 15:00:00'),
+('CERT-2025-011', 'https://unitins.br/cert/25011', 14, 10, 3, '2025-01-22 16:00:00'),
+('CERT-2025-012', 'https://unitins.br/cert/25012', 18, 10, 3, '2025-01-22 17:00:00'),
+-- Bloco 5: Mais certificados para os alunos antigos (Maria, João, Ana) e outros
+('CERT-2025-013', 'https://unitins.br/cert/25013', 1, 9, 7, '2025-01-25 09:00:00'),
+('CERT-2025-014', 'https://unitins.br/cert/25014', 2, 9, 7, '2025-01-25 10:00:00'),
+('CERT-2025-015', 'https://unitins.br/cert/25015', 3, 9, 7, '2025-01-25 11:00:00'),
+('CERT-2025-016', 'https://unitins.br/cert/25016', 1, 4, 6, '2025-01-30 14:00:00'),
+('CERT-2025-017', 'https://unitins.br/cert/25017', 2, 5, 5, '2025-02-01 10:00:00'),
+('CERT-2025-018', 'https://unitins.br/cert/25018', 3, 7, 3, '2025-02-02 11:00:00'),
+('CERT-2025-019', 'https://unitins.br/cert/25019', 4, 4, 6, '2025-02-03 15:00:00'),
+('CERT-2025-020', 'https://unitins.br/cert/25020', 5, 9, 7, '2025-02-04 16:00:00'),
+('CERT-2025-021', 'https://unitins.br/cert/25021', 1, 7, 3, '2025-02-05 09:00:00'),
+('CERT-2025-022', 'https://unitins.br/cert/25022', 15, 8, 7, '2025-02-05 10:00:00'),
+('CERT-2025-023', 'https://unitins.br/cert/25023', 20, 9, 7, '2025-02-06 11:00:00');
